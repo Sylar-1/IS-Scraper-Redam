@@ -1,0 +1,10 @@
+selenium==4.24.0
+pytesseract
+Pillow
+Flask==3.0.3
+Werkzeug==3.0.4
+Jinja2==3.1.4
+certifi==2024.8.30
+urllib3==2.2.3
+PySocks==1.7.1
+idna==3.10
