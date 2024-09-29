@@ -17,4 +17,4 @@ COPY . /app
 WORKDIR /app
 
 # Comando para ejecutar el script
-CMD ["python", "main.py"]
+CMD ["python", "app.py"]

@@ -29,7 +29,7 @@ def get_driver(browser_name):
 
 
 # Función de scraping
-def scrape_page(url, browser_name="chrome"):
+def scrape_page(url, dni, browser_name="chrome"):
     driver = get_driver(browser_name)
     try:
         driver.get(url)
@@ -59,7 +59,7 @@ def scrape_page(url, browser_name="chrome"):
 
         # Localizar el campo de texto por id y escribir el número "2728282"
         numero_documento = driver.find_element(By.ID, 'numerodocumento')
-        numero_documento.send_keys('70838125')  # Escribir en el campo de texto
+        numero_documento.send_keys(dni)  # Escribir en el campo de texto
 
         # Bucle para intentar resolver el captcha
         success = False
@@ -110,6 +110,6 @@ def scrape_page(url, browser_name="chrome"):
 if __name__ == "__main__":
     # URL de la página que quieres scrapear
     url = "https://casillas.pj.gob.pe/redam/#/"
-
+    dni = "70838125"
     # Ejecutar el scraping en Chrome
     scrape_page(url, browser_name="chrome")
