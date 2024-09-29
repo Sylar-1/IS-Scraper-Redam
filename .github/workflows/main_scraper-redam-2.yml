@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://mcr.microsoft.com/
-        username: ${{ secrets.AzureAppService_ContainerUsername_e792092512ba4111bc792d722869260f }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_5430ec1fec7b43b1a4d56b30ebf757be }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_3c3a571cb1734040b776a9fc1c2be99e }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_9a05c7f777c74739aabc4f81659c9306 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_e792092512ba4111bc792d722869260f }}/appsvc/staticsite:${{ github.sha }}
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_3c3a571cb1734040b776a9fc1c2be99e }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'scraper-redam-2'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4d8f9118ff5f445e8208c7727371e137 }}
-        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_e792092512ba4111bc792d722869260f }}/appsvc/staticsite:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_a8dc2f413a644c58b7e161ac6c38d529 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_3c3a571cb1734040b776a9fc1c2be99e }}/appsvc/staticsite:${{ github.sha }}'
