@@ -7,9 +7,13 @@ from selenium.webdriver.common.keys import Keys
 import pytesseract
 from PIL import Image
 import time  # Importar el módulo time
+import os
 
 # Ruta de instalación de Tesseract en tu contenedor
 pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+
+# Usar una variable de entorno para Selenium Hub URL
+selenium_hub_url = os.getenv('SELENIUM_HUB_URL', 'http://selenium-hub:4444/wd/hub')
 
 # Configurar Selenium Grid y conectarse al hub
 def get_driver(browser_name):
@@ -22,7 +26,8 @@ def get_driver(browser_name):
 
     driver = webdriver.Remote(
         #command_executor='http://localhost:4444/wd/hub',
-        command_executor='http://selenium-hub:4444/wd/hub',
+        #command_executor='http://selenium-hub:4444/wd/hub',
+        command_executor=selenium_hub_url,
         options=options  # Aquí reemplazamos desired_capabilities por options
     )
     return driver
